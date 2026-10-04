@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QRコード解析</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>QRコード解析</h1>
+      <p class="lead">
+        画像をまとめて放り込むと、画像名とQRの中身の対応を一覧にします。URLはそのままクリックで開けます。
+        行を選ぶと、シンボルのどの領域に何が書かれているかを色分けで確認できます。
+      </p>
+    </header>
+
+    <main>
+      <section
+        id="dropzone"
+        class="dropzone"
+        tabindex="0"
+        role="button"
+        aria-label="画像を選択、またはドラッグ＆ドロップ"
+      >
+        <p class="dropzone-title">画像をドラッグ＆ドロップ</p>
+        <p class="dropzone-hint">クリックしてファイルを選ぶこともできます（複数選択可・PNG / JPEG / WebP / GIF）</p>
+        <input id="file-input" type="file" accept="image/*" multiple hidden />
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="results" class="results" hidden>
+        <div class="results-head">
+          <h2>解析結果</h2>
+          <button id="clear-button" type="button" class="ghost-button">すべて消す</button>
+        </div>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th scope="col">画像</th>
+                <th scope="col">ファイル名</th>
+                <th scope="col">種別</th>
+                <th scope="col">中身</th>
+                <th scope="col">ver.</th>
+                <th scope="col">誤り訂正</th>
+                <th scope="col">マスク</th>
+                <th scope="col">モード</th>
+              </tr>
+            </thead>
+            <tbody id="result-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="detail" class="detail" hidden aria-live="polite"></section>
+    </main>
+
+    <footer class="page-footer">
+      <p>
+        すべての処理はブラウザの中だけで完結します。画像はどこにも送信されません。
+        読み取りには <a href="https://github.com/cozmo/jsQR" rel="noreferrer noopener">jsQR</a>（Apache-2.0）を同梱しています。
+      </p>
+    </footer>
+
+    <div id="tooltip" class="tooltip" hidden></div>
+
+    <!-- 読み込み順に意味がある。各ファイルは先に読まれたものを前提にしている。 -->
+    <script src="js/tables.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/codewords.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/payload.js"></script>
+    <script src="js/vendor/jsqr.js"></script>
+    <script src="js/detect.js"></script>
+    <script src="js/analyze.js"></script>
+    <script src="js/pipeline.js"></script>
+    <script src="js/describe.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "qrcode-analyzer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "QRコード解析ツール（画像→URL一覧＋領域可視化）",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "samples": "node tools/gen-samples.js",
+    "tables": "node tools/gen-tables.js"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "pngjs": "^7.0.0",
+    "qrcode": "^1.5.4"
+  }
+}
